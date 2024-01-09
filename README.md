@@ -18,3 +18,22 @@ It should be next tp your own embedded project, or a submodule of that project, 
 * STMachine (base and other classes to create a C++ based state machine)
 * StateService (base class for a state machine base service)
 
+# Directory Structure
+
+## cppfw/ 
+Exportable headers are all here in this directory, so this location will contain all info needed to compile in the framewaork source (or libs) and integrate them into application code. Do not include headers from any other directory.
+
+## common
+Will contain common internal headers are source code. Some enxternal source may also be here but APIs are exposed only in cppfw/
+
+## devbase
+The C++ base classes for creating a device stack, including registration of derived types and enumerations.
+
+## chardev
+Character stream based device classes. Will include special classes as well such as gpiodev which really only uses ioctl calls for its operation.
+
+## filedev
+C++ classes defining a simple named filesystem based off of some raw flash sectors made available on the target. Flash hardware info will be imported in the form of defines that are setup in the main project or some BSP structure.
+
+## libs
+Generated static libraries are created here, for linking into the main project.
